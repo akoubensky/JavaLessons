@@ -10,6 +10,19 @@ public class Guess {
     }
 
     public static void main(String[] args) {
-        // Здесь будет Ваша реализация
+        int a = 1, b = 100;
+        do {
+            int m = (a+b)/2;
+            // a <= m < b
+            int r = memory(m);
+            if (r < 0) {
+                // Середина меньше задуманного
+                a = m + 1;
+            } else {
+                // Середина больше или равна задуманного
+                b = m;
+            }
+        } while (a < b);
+        System.out.println("Guess = " + a + ", answer = " + answer);
     }
 }
