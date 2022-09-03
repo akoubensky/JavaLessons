@@ -1,6 +1,15 @@
 public class SinSeries {
     private static double sin(double x, double eps) {
-        return 0;
+        double xDash = Math.abs(x) % (2*Math.PI);
+        double sum = xDash;
+        double u = xDash;
+        int k2 = 2;
+        do {
+            u = -u * xDash * xDash / k2 / (k2+1);
+            sum += u;
+            k2 += 2;
+        } while (Math.abs(u) > eps);
+        return x < 0 ? -sum : sum;
     }
 
     private static double equation(double n, double eps) {
@@ -52,7 +61,9 @@ public class SinSeries {
     }
 
     public static void main(String[] args) {
-        double result = equation(1.5, 1e-100);
+        double result = equation(1.5, 1e-10);
         System.out.println("func= " + result);
+        System.out.println(sin(12, 1e-10));
+        System.out.println(Math.sin(12));
     }
 }
