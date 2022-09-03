@@ -10,7 +10,6 @@ public class Guess {
     }
 
     public static void main(String[] args) {
-        // Здесь будет Ваша реализация
         for (int i =0;i<10000;i++) {
             answer=0;
 
