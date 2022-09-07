@@ -6,9 +6,11 @@ public class Example {
         System.out.println(c2.getRe());
 
         // Если мы реализуем операции сложения и умножения, то сможем написать:
-//        Complex c3 = Complex.add(c1, c2);
+        Complex c3 = Complex.add(c1, c2);
+        System.out.println(c3);
 //        Complex c4 = Complex.multiply(c2, c3);
         // или, скажем,
-//        Complex c5 = c1.add(c2);
+        Complex c5 = c1.add(c2);
+        System.out.println(c5);
     }
 }
