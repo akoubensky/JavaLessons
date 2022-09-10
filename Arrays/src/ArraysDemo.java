@@ -10,12 +10,6 @@ public class ArraysDemo {
     private static int[] func1(int[] table) {
         int size = table.length;
 
-        System.out.print("Исходный массив:");
-        for (int i = 0; i < size; i++) {
-            System.out.print(" " + table[i]);
-        }
-        System.out.println();
-
         int n;
         for (int a = 0; a < size; a++) {
             if ((double) (table[a]) % 2 != 0) {
@@ -59,6 +53,7 @@ public class ArraysDemo {
     public static void main(String[] args) {
 //      Исходный массив
         int[] table1 = {1, 2, 3, 6, 3, 4, 6, 5, 8, 2, 3, 5, 8, 12, 11};
+        System.out.println(Arrays.toString(table1));
 //      Создаем копию исходного массива, что бы его не повредить
         int[] table2 = Arrays.copyOf(table1, table1.length);
         long time = System.currentTimeMillis();

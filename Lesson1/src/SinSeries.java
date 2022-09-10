@@ -13,7 +13,12 @@ public class SinSeries {
     }
 
     private static double equation(double n, double eps) {
-
+        int aa = 12;
+        n = switch(aa / 3) {
+            case 0, 1 -> n+2;
+            case 3 -> { eps += 1; yield 10; }
+            default -> n-2;
+        };
         double b = n;
         if (n > 0) {
             while ((Math.abs(b) >= Math.PI)) {
