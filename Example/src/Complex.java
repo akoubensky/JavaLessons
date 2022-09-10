@@ -54,6 +54,7 @@ public class Complex {
     }
 //    написать методы для других операций с комплексными числами.
 //    Это ветка от 07.23 Example
+
 // TODO Вычитание
     public static Complex sub (Complex a, Complex b) {
         return new Complex(a.re- b.re,a.im- b.im);
@@ -68,6 +69,7 @@ public class Complex {
     public static Complex dif (Complex a, Complex b) {
         return a.sub(b);
     }
+
 // TODO Умножение
     public static Complex mul (Complex a, Complex b) {
         return new Complex((a.re* b.re)-(a.im* b.im),(a.im* b.re)+ (a.re* b.im));
@@ -82,6 +84,7 @@ public class Complex {
     public static Complex com (Complex a, Complex b) {
         return a.mul(b);
     }
+
 // TODO Модуль
     public static double mod (Complex a) {
        double r= Math.sqrt((a.re* a.re)+(a.im* a.im));
@@ -98,6 +101,7 @@ public class Complex {
     public static double modul (Complex a) {
         return mod(a);
     }
+
 // TODO Аргумент
     public static double arg (Complex a) {
         double j = Math.atan(a.im/ a.re);

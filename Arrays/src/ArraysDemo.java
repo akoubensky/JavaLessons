@@ -6,7 +6,7 @@ public class ArraysDemo {
 //    таким образом, что бы в начале шли четные, а за ними нечетные.
 //    С сохранением исходного порядка.
 
-    //TODO        func1 работает по приципу пузырьковой сортировки.
+//TODO        func1 работает по приципу пузырьковой сортировки.
     private static int[] func1(int[] table) {
         int size = table.length;
 
@@ -34,7 +34,7 @@ public class ArraysDemo {
         return table;
     }
 
-    //TODO    func2 создает новый массив на базе исходного, и заполняет его
+//TODO    func2 создает новый массив на базе исходного, и заполняет его
     private static int[] func2(int[] table) {
         System.out.print("Исходный массив: " + Arrays.toString(table) + "\n");
         int size = table.length;
