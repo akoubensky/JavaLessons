@@ -65,6 +65,34 @@ public class TaskArray {
         return tableX;
     }
 
+    /**
+     * Мой вариант функции - А.К.
+     * @param table Исходный массив
+     * @param x     Количество элементов
+     * @return      Результат
+     */
+    private static int[] getMax2(int[] table, int x) {
+        // Первые x элементов
+        int[] result = Arrays.copyOf(table, x);
+        // Сортируем их. Можно и пузырьком
+        Arrays.sort(result);
+        for (int i = x; i < table.length; i++) {
+            int element = table[i];
+            if (element > result[0]) {
+                // Вставляем новый элемент в упорядоченный массив
+                int j = 1;
+                while (j < x && result[j] < element) {
+                    // Сдвигаем элементы
+                    result[j-1] = result[j];
+                    j++;
+                }
+                result[j-1] = element;
+            }
+        }
+
+        return result;
+    }
+
 
     public static void main(String[] args) {
         int[] table1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11};
@@ -89,7 +117,11 @@ public class TaskArray {
         System.out.print("Измененный массив (getMax): " + Arrays.toString(getMax) + "\n"+"\n");
 
 //TODO        Вызывем func getMax1
-        int[] getMax1=getMax(tablegM,9);
+        int[] getMax1=getMax1(tablegM,9);
         System.out.print("Измененный массив (getMax1): " + Arrays.toString(getMax1) + "\n"+"\n");
+
+        int[] getMax2=getMax2(tablegM,9);
+        System.out.print("Измененный массив (getMax2): " + Arrays.toString(getMax1) + "\n"+"\n");
+
     }
 }
