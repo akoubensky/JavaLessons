@@ -1,5 +1,31 @@
-public class Complex {
-   private double re;
+import java.util.Objects;
+
+public class Complex implements Comparable<Complex> {
+
+    @Override
+    public int compareTo(Complex c) {
+//        if (re<c.re) {
+//            return -1;
+//        } else if (re>c.re) {
+//            return 1;
+//        } else if (im>c.im) {
+//            return 1;
+//        } else if (im<c.im) {
+//            return -1;
+//        }
+//        return 0;
+        return Double.compare(re,c.re)==0?Double.compare(im,c.im):Double.compare(re,c.re);
+    }
+
+    public int compareToSwitch (Complex c) {
+        return switch (Double.compare(re,c.re)) {
+            case 0->Double.compare(im,c.im);
+            case 1,-1->Double.compare(re,c.re);
+            default -> 0;
+        };
+    }
+
+    private double re;
    private double im;
 
    public Complex (double re, double im) {
@@ -117,5 +143,17 @@ public class Complex {
     public static double argum (Complex a) {
         return arg(a);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Complex complex = (Complex) o;
+        return re==complex.re && im==complex.im;
+    }
+    public int hashCode () {
+       return Objects.hash(re,im);
+    }
+
 }
 

@@ -37,5 +37,12 @@ public class Example {
         double c16=Complex.argum(c1);
         double c17=c1.argum();
         System.out.print("c14: "+c14+"\n"+"c15: "+c15+"\n"+"c16: "+c16+"\n"+"c17: "+c17+"\n"+"\n");
+
+        Complex c21=new Complex(1,1);
+        Complex c22=new Complex(1,1);
+        if (c21.equals(c22)) System.out.println("c21==c22");
+        else System.out.println("c21!=c22");
+
+        System.out.println(c21.hashCode()+" "+c22.hashCode());
     }
 }
