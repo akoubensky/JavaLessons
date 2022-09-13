@@ -91,6 +91,5 @@ public class TaskArray {
 //TODO        Вызывем func getMax1
         int[] getMax1=getMax(tablegM,9);
         System.out.print("Измененный массив (getMax1): " + Arrays.toString(getMax1) + "\n"+"\n");
-
     }
 }
