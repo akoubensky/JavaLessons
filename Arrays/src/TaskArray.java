@@ -1,7 +1,7 @@
 import java.util.Arrays;
 
 public class TaskArray {
-//TODO    Р—Р°РґР°С‡Р°: РџРµСЂРµРІРµСЂРЅСѓС‚СЊ РјР°СЃСЃРёРІ, С„СѓРЅРєС†РёСЏ(РјР°СЃСЃРёРІ) СЃС‚Р°С‚РёРє РІРѕРёРґ, РїРѕР»СѓС‡Р°РµС‚ РјР°СЃСЃРёРІ РёР· С†РµР»С‹С…
+//TODO    Задача: Перевернуть массив, функция(массив) статик воид, получает массив из целых
     private static void func1(int [] table) {
         int size = table.length;
         for (int i=0; i< size/2;i++) {
@@ -10,8 +10,8 @@ public class TaskArray {
             table[size-1-i]=n;
         }
     }
-//TODO    Р—Р°РґР°С‡Р°: РќР°РїРёСЃР°С‚СЊ С„СѓРЅРєС†РёСЋ РєРѕС‚РѕСЂР°СЏ СЂР°Р±РѕС‚Р°РµС‚ С‚Р°Рє Р¶Рµ РєР°Рє arrays equals (СЃРІРѕСЋ) РєРѕС‚РѕСЂР°СЏ РїРѕР»СѓС‡Р°РµС‚
-//        2Р° РјР°СЃСЃРёРІР° РёР· С†РµР»С‹С… РІ РєР°С‡РµСЃС‚РІРµ РїР°СЂР°РјРµС‚СЂР° Рё СЃСЂР°РІРЅРёРІР°РµС‚ РёС… РЅР° СЂР°РІРµРЅСЃС‚РІРѕ.
+//TODO    Задача: Написать функцию которая работает так же как arrays equals (свою) которая получает
+//        2а массива из целых в качестве параметра и сравнивает их на равенство.
 
     private static boolean func2 (int [] table1,int [] table2) {
         if (table1.length!=table2.length) return false;
@@ -22,8 +22,8 @@ public class TaskArray {
         return true;
     }
 
-//TODO  Р—Р°РґР°С‡Р°: Р¤СѓРЅРєС†РёСЏ getMax РІС‹Р±РёСЂР°РµС‚ РјР°РєСЃРёРјР°Р»СЊРЅС‹Рµ СЌР»РµРјРµРЅС‚С‹ РёР· РјР°СЃСЃРёРІР° (2Р° Р°СЂРіСѓРјРµРЅС‚Р° РјР°СЃСЃРёРІ РёР· С†РµР»С‹С…
-//      Рё С‡РёСЃР»Рѕ(РєРѕР»Р»РёС‡РµСЃС‚РІРѕ РјР°РєСЃРёРјР°Р»СЊРЅС‹С… СЌР»РµРјРµРЅС‚РѕРІ)), РїРѕРјРµС‰Р°РµС‚ РІ РґСЂ РјР°СЃСЃРёРІ. Р РµС‚РµСЂРЅ СЃСЃС‹Р»РєСѓ РЅР° РјР°СЃСЃРёРІ.
+//TODO  Задача: Функция getMax выбирает максимальные элементы из массива (2а аргумента массив из целых
+//      и число(колличество максимальных элементов)), помещает в др массив. Ретерн ссылку на массив.
 
     private static int[] getMax (int[] table, int x) {
         int [] tableX=new int[x];
@@ -44,7 +44,7 @@ public class TaskArray {
         }
         return tableX;
     }
-//TODO  РЈР»СѓС‡С€РµРЅРЅР°СЏ РІРµСЂСЃРёСЏ getMax
+//TODO  Улучшенная версия getMax
 
     private static int[] getMax1 (int[] table, int x) {
         int[] tableX = new int[x];
@@ -66,23 +66,25 @@ public class TaskArray {
     }
 
     /**
-     * РњРѕР№ РІР°СЂРёР°РЅС‚ С„СѓРЅРєС†РёРё - Рђ.Рљ.
-     * @param table РСЃС…РѕРґРЅС‹Р№ РјР°СЃСЃРёРІ
-     * @param x     РљРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ
-     * @return      Р РµР·СѓР»СЊС‚Р°С‚
+     * Мой вариант функции - А.К.
+     * @param table Исходный массив
+     * @param x     Количество элементов, полагаем x < table.length
+     * @return      Результат
      */
     private static int[] getMax2(int[] table, int x) {
-        // РџРµСЂРІС‹Рµ x СЌР»РµРјРµРЅС‚РѕРІ
+        // Первые x элементов
         int[] result = Arrays.copyOf(table, x);
-        // РЎРѕСЂС‚РёСЂСѓРµРј РёС…. РњРѕР¶РЅРѕ Рё РїСѓР·С‹СЂСЊРєРѕРј
-        Arrays.sort(result);
-        for (int i = x; i < table.length; i++) {
+        // Сортируем их. Можно и пузырьком
+//        Arrays.sort(result);
+//        for (int i = x; i < table.length; i++) {
+        Arrays.fill(result, Integer.MIN_VALUE);
+        for (int i = 0; i < table.length; i++) {
             int element = table[i];
             if (element > result[0]) {
-                // Р’СЃС‚Р°РІР»СЏРµРј РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ СѓРїРѕСЂСЏРґРѕС‡РµРЅРЅС‹Р№ РјР°СЃСЃРёРІ
+                // Вставляем новый элемент в упорядоченный массив
                 int j = 1;
                 while (j < x && result[j] < element) {
-                    // РЎРґРІРёРіР°РµРј СЌР»РµРјРµРЅС‚С‹
+                    // Сдвигаем элементы
                     result[j-1] = result[j];
                     j++;
                 }
@@ -97,31 +99,31 @@ public class TaskArray {
     public static void main(String[] args) {
         int[] table1 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11};
         System.out.println(Arrays.toString(table1));
-//      РЎРѕР·РґР°РµРј РєРѕРїРёСЋ РёСЃС…РѕРґРЅРѕРіРѕ РјР°СЃСЃРёРІР°, С‡С‚Рѕ Р±С‹ РµРіРѕ РЅРµ РїРѕРІСЂРµРґРёС‚СЊ
+//      Создаем копию исходного массива, что бы его не повредить
         int[] table2 = Arrays.copyOf(table1, table1.length);
 
 
-//TODO        Р’С‹Р·С‹РІРµРј func1
+//TODO        Вызывем func1
         func1(table2);
-        System.out.print("РР·РјРµРЅРµРЅРЅС‹Р№ РјР°СЃСЃРёРІ (func1): " + Arrays.toString(table2) + "\n"+"\n");
+        System.out.print("Измененный массив (func1): " + Arrays.toString(table2) + "\n"+"\n");
 
-//TODO        Р’С‹Р·С‹РІРµРј func2
+//TODO        Вызывем func2
         int[] table3 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         int[] table4 = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10,11};
-        System.out.print("Р РµР·СѓР»СЊС‚Р°С‚С‹ (func2): "+func2(table1,table2)+" ");
+        System.out.print("Результаты (func2): "+func2(table1,table2)+" ");
         System.out.println(func2(table1,table3)+" "+func2(table1,table4)+"\n");
 
-//TODO        Р’С‹Р·С‹РІРµРј func getMax
+//TODO        Вызывем func getMax
         int [] tablegM={44,5,33,66,123,44,44,67,3,4,99,1,2,56,100};
         int[] getMax=getMax(tablegM,8);
-        System.out.print("РР·РјРµРЅРµРЅРЅС‹Р№ РјР°СЃСЃРёРІ (getMax): " + Arrays.toString(getMax) + "\n"+"\n");
+        System.out.print("Измененный массив (getMax): " + Arrays.toString(getMax) + "\n"+"\n");
 
-//TODO        Р’С‹Р·С‹РІРµРј func getMax1
+//TODO        Вызывем func getMax1
         int[] getMax1=getMax1(tablegM,9);
-        System.out.print("РР·РјРµРЅРµРЅРЅС‹Р№ РјР°СЃСЃРёРІ (getMax1): " + Arrays.toString(getMax1) + "\n"+"\n");
+        System.out.print("Измененный массив (getMax1): " + Arrays.toString(getMax1) + "\n"+"\n");
 
         int[] getMax2=getMax2(tablegM,9);
-        System.out.print("РР·РјРµРЅРµРЅРЅС‹Р№ РјР°СЃСЃРёРІ (getMax2): " + Arrays.toString(getMax1) + "\n"+"\n");
+        System.out.print("Измененный массив (getMax2): " + Arrays.toString(getMax1) + "\n"+"\n");
 
     }
 }
