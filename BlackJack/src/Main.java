@@ -1,4 +1,5 @@
 import ru.lesson.cards.*;
+import ru.lesson.players.Player;
 
 public class Main {
 
@@ -22,5 +23,11 @@ public class Main {
         for (int i = 0; i < 10; i++) {
             System.out.println(Deck.DECK.getCard());
         }
+
+        Player player = new Player("Вася");
+        player.getCard();
+        player.getCard();
+        player.getCard();
+        System.out.println(player);
     }
 }
