@@ -29,10 +29,40 @@ public class Game {
         if (human.value() > 21) {
             System.out.println("Перебор! Вы проиграли!");
             return;
+        } else if (human.value() >= 20) {
+            System.out.println(human);
+        }
+
+        int humanValues = human.value();
+        do {
+            computer.getCard();
+        } while (computer.value() < 16);
+        int compValue = computer.value();
+        System.out.println(computer);
+        if (compValue > 21) {
+            System.out.println("У меня перебор... Вы выиграли!");
+        } else if (compValue == humanValues) {
+            System.out.println("Ничья.");
+        } else if (compValue > humanValues) {
+            System.out.println("У меня больше, я выиграл");
+        } else {
+            System.out.println("У вас больше, поздравляю!");
         }
     }
 
     public static void main(String[] args) {
-        play(args[0]);
+        String humanName;
+        String answer;
+        if (args.length > 0) {
+            humanName = args[0];
+        } else {
+            System.out.print("Введите свое имя: ");
+            humanName = scanner.nextLine();
+        }
+        do {
+            play(humanName);
+            System.out.print("Сыграем еще? (y/n) ");
+            answer = scanner.nextLine();
+        } while (answer.equalsIgnoreCase("Y"));
     }
 }

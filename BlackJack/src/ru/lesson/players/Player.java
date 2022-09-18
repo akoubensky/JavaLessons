@@ -35,4 +35,8 @@ public class Player {
         sb.append("-------------------\n").append("Всего: ").append(value());
         return sb.toString();
     }
+
+    public void clear() {
+        hand.clear();
+    }
 }
