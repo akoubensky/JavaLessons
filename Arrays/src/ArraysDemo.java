@@ -56,7 +56,7 @@ public class ArraysDemo {
     }
 
     public static void main(String[] args) {
-        sout.println(sout.charset());
+//        sout.println(sout.charset());
 //      Исходный массив
         int[] table1 = {1, 2, 3, 6, 3, 4, 6, 5, 8, 2, 3, 5, 8, 12, 11};
         sout.println(Arrays.toString(table1));

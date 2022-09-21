@@ -24,6 +24,16 @@ public class Player {
         }
         return hand.size() == 2 && summa == 22 ? 21 : summa;
     }
+    public int computerRunning () {
+        if (value() >= 17) {
+            System.out.println("-------------------\n"+"Ход апонента "+"\n"+name+": Мне пожалуй хватит!"+"\n-------------------");
+            return 0;
+        } else {
+            getCard();
+            System.out.println("-------------------\n"+"Ход апонента "+"\n"+name+": Я доберу еще карту!"+"\n-------------------");
+            return 1;
+        }
+    }
 
     @Override
     public String toString() {
