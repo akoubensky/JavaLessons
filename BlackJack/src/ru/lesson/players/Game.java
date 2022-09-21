@@ -18,10 +18,13 @@ public class Game {
         computer.getCard();
         computer.getCard();
 
+        // В этой схеме программы лучше заменить на цикл while() {}
         do {
             if (human.value() < 21) {
                 System.out.println(human);
-                computer.computerRunning();
+                // Метод computerRunning слишком специфичен, поэтому это не метод класса Player
+                // Возможно, игроков всё-таки следует различать, и метод getCard реализовывать по-разному
+                computer.computerRunning(); // Независимо от того, надо ли реально брать карту, сообщение всё равно будет выведено
                 System.out.print("Ещё? (y/n) ");
                 String answer = scanner.nextLine();
                 if (answer.equalsIgnoreCase("N")) {
@@ -31,6 +34,7 @@ public class Game {
                         i=computer.computerRunning();
                     }
 // TODO С помощью switch () сделать.
+                    // Здесь switch не получится, оставьте как есть
                     if (human.value()>computer.value()) {
                         System.out.println(human +"\n"+"\n"+ computer+"\n"+"\n" + "У вас больше очков! Вы выиграли!");
                         break;
@@ -62,7 +66,7 @@ public class Game {
     }
 
     public static void main(String[] args) {
-
-        play(args[1]);
+        // Давайте здесь тоже зациклим через "Сыграем ещё? (y/n)"
+        play(args[0]);
     }
 }
