@@ -7,21 +7,22 @@ public class Test {
         ll.add(12);
         ll.add(8);
         ll.add(2);
-        for (Integer i : ll) {
-            System.out.println("Ёлемент: " + i);
-        }
-        System.out.println(ll.size());
-        ll.remove(8);
-        System.out.println(ll.size());
+//        for (Integer i : ll) {
+//            System.out.println("Ёлемент: " + i);
+//        }
+//        System.out.println(ll.size());
+//        ll.remove(8);
+//        System.out.println(ll.size());
         System.out.println(ll); // [2, 8, 12] - StringBuilder (можно и рекурсивно, но сложнее)
-        LinkedList<String> ll1 = new LinkedList<>();
-        ll1.add("Hello");
-        for (String s : ll1) {
-
-        }
-        for (Iterator<String> iterator = ll1.iterator(); iterator.hasNext(); ) {
-            String s = iterator.next();
-
-        }
+        System.out.println(ll.toStringRec());
+//        LinkedList<String> ll1 = new LinkedList<>();
+//        ll1.add("Hello");
+//        for (String s : ll1) {
+//
+//        }
+//        for (Iterator<String> iterator = ll1.iterator(); iterator.hasNext(); ) {
+//            String s = iterator.next();
+//
+//        }
     }
 }

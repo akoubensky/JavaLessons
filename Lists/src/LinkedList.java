@@ -1,3 +1,5 @@
+import ru.lesson.cards.Card;
+
 import java.util.Iterator;
 
 public class LinkedList<E> implements Iterable<E> {
@@ -132,4 +134,35 @@ public class LinkedList<E> implements Iterable<E> {
 //        if (link == null) return 0;
 //        return sum2(link.next) + link.info;
 //    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb=new StringBuilder();
+        sb.append("[");
+        Link<E> current;
+        for (current = first; current.next != null; current = current.next) {
+            sb.append(current.info);
+            sb.append(", ");
+        }
+        sb.append(current.info);
+        sb.append("]");
+        return sb.toString();
+    }
+    StringBuilder sb=new StringBuilder();
+    public String toStringRec() {
+
+        sb.append("[ ");
+        if (first != null) toStringRec(first);
+        sb.append("]");
+        return  sb.toString();
+    }
+    private void toStringRec(Link <E> current) {
+
+        sb.append(current.info);
+        sb.append(" ");
+        if (current.next == null) {
+            return;
+        }
+        toStringRec(current.next);
+    }
 }
