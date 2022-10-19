@@ -148,21 +148,21 @@ public class LinkedList<E> implements Iterable<E> {
         sb.append("]");
         return sb.toString();
     }
-    StringBuilder sb=new StringBuilder();
-    public String toStringRec() {
 
+    public String toStringRec() {
+        StringBuilder sb=new StringBuilder();
+//        sb.delete(0,sb.length()); Очистить Стрингбилдер
         sb.append("[ ");
-        if (first != null) toStringRec(first);
+        if (first != null) toStringRec(first, sb);
         sb.append("]");
         return  sb.toString();
     }
-    private void toStringRec(Link <E> current) {
-
-        sb.append(current.info);
-        sb.append(" ");
+    private void toStringRec(Link <E> current, StringBuilder builder) {
+        builder.append(current.info);
+        builder.append(" ");
         if (current.next == null) {
             return;
         }
-        toStringRec(current.next);
+        toStringRec(current.next, builder);
     }
 }

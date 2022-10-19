@@ -1,4 +1,5 @@
 import ru.lesson.cards.*;
+import ru.lesson.players.Human;
 import ru.lesson.players.Player;
 
 public class Main {
@@ -24,7 +25,7 @@ public class Main {
             System.out.println(Deck.DECK.getCard());
         }
 
-        Player player = new Player("Вася");
+        Player player = new Human("Вася");
         player.getCard();
         player.getCard();
         player.getCard();
