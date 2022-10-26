@@ -12,7 +12,6 @@ public class Human extends Player {
     public boolean choice() {
         System.out.print("Åù¸? (y/n) ");
         String answer = scanner.nextLine();
-        getCard();
         if (answer.equalsIgnoreCase("N")) {
             return false;
         }

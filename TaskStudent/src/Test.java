@@ -61,7 +61,7 @@ public class Test {
 ////        listStudents должент был выдавать ссылку на множество Set? Или List?
 
         System.out.println("Итератор");
-         Iterator<Student> it=ss.getStudentSetIterator();
+         Iterator<Student> it=ss.iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
         }

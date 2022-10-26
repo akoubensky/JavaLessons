@@ -50,4 +50,8 @@ public abstract class Player {
         sb.append("-------------------\n").append("Всего: ").append(value());
         return sb.toString();
     }
+    public Player(String name, Strategy strategy) {
+        strategy.setPlayer(this);
+        this.name = name;
+    }
 }

@@ -1,4 +1,3 @@
-import ru.lesson.cards.Card;
 
 import java.util.Iterator;
 

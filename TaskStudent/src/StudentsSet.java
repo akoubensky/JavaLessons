@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class StudentsSet implements  Iterable<Student>, StudentSetIterator {
+public class StudentsSet implements  Iterable<Student> {
     private int count;
     private final Student[] studentsGroup = new Student[10];
 
@@ -221,8 +221,6 @@ public class StudentsSet implements  Iterable<Student>, StudentSetIterator {
     }
 
     /** Здесь реализация интерфейса Итерабл */
-    private int index;
-    private Student studentIndex;
 
     @Override
     public Iterator<Student> iterator() {
@@ -271,10 +269,10 @@ public class StudentsSet implements  Iterable<Student>, StudentSetIterator {
 
 
     /** Здесь реализация патерна Итератор */
-    @Override
-    public Iterator<Student> getStudentSetIterator() {
-        return new StudentSetIter();
-    }
+//    @Override
+//    public Iterator<Student> getStudentSetIterator() {
+//        return new StudentSetIter();
+//    }
     private class StudentSetIter implements Iterator<Student>{
         private int index;
         private Student studentIndex;

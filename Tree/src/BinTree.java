@@ -1,6 +1,5 @@
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.function.Consumer;
 
 public class BinTree<E extends Comparable<E>> implements Iterable<E> {
     private static class Node<E> {
