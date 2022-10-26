@@ -15,6 +15,8 @@ public class Test {
 //        System.out.println(ll.size());
         System.out.println(ll); // [2, 8, 12] - StringBuilder (можно и рекурсивно, но сложнее)
         System.out.println(ll.toStringRec());
+        ll.remove(8);
+        System.out.println(ll.toStringRec());
 //        LinkedList<String> ll1 = new LinkedList<>();
 //        ll1.add("Hello");
 //        for (String s : ll1) {

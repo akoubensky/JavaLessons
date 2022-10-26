@@ -5,9 +5,9 @@ import ru.lesson.cards.Deck;
 
 import java.util.ArrayList;
 
-public class Player {
+public abstract class Player {
     private final ArrayList<Card> hand = new ArrayList<>(8);
-    private final String name;
+    protected final String name;
 
     public Player(String name) {
         this.name = name;
@@ -16,6 +16,10 @@ public class Player {
     public void getCard() {
         hand.add(Deck.DECK.getCard());
     }
+    public abstract boolean choice ();
+//    2 новых класса которых должны быть наследниками и в них должна быть реализована эта функция которая будет отвечать за ход плеера.
+
+//    Класс стратегия.
 
     public int value() {
         int summa = 0;
@@ -25,16 +29,16 @@ public class Player {
         return hand.size() == 2 && summa == 22 ? 21 : summa;
     }
     // В этом методе лучше возвращать логическое значение (boolean)
-    public int computerRunning () {
-        if (value() >= 17) {
-            System.out.println("-------------------\n"+"Ход оппонента "+"\n"+name+": Мне пожалуй хватит!"+"\n-------------------");
-            return 0;
-        } else {
-            getCard();
-            System.out.println("-------------------\n"+"Ход оппонента "+"\n"+name+": Я доберу еще карту!"+"\n-------------------");
-            return 1;
-        }
-    }
+//    public int computerRunning () {
+//        if (value() >= 17) {
+//            System.out.println("-------------------\n"+"Ход оппонента "+"\n"+name+": Мне пожалуй хватит!"+"\n-------------------");
+//            return 0;
+//        } else {
+//            getCard();
+//            System.out.println("-------------------\n"+"Ход оппонента "+"\n"+name+": Я доберу еще карту!"+"\n-------------------");
+//            return 1;
+//        }
+//    }
 
     @Override
     public String toString() {
@@ -45,5 +49,9 @@ public class Player {
         }
         sb.append("-------------------\n").append("Всего: ").append(value());
         return sb.toString();
+    }
+    public Player(String name, Strategy strategy) {
+        strategy.setPlayer(this);
+        this.name = name;
     }
 }

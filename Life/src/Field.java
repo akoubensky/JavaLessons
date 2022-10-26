@@ -10,6 +10,6 @@ public class Field {
     private State[][] field;
 
     public static void main(String[] args) throws IOException {
-        List<String> list =  Files.readAllLines(Path.of("Life", "Glyder"));
+        List<String> list =  Files.readAllLines(Path.of("Life", args[0]));
     }
 }
