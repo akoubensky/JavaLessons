@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import java.util.function.Consumer;
 
 public class Test {
     public static void main(String[] args) {
@@ -23,7 +24,16 @@ public class Test {
 //            System.out.println(s);
 //        }
 
-        studentBinTree.viewTree();
+        Consumer<Student> printStudent = System.out::println;
+        studentBinTree.iterate(printStudent);
+//        studentBinTree.viewTree();
+        System.out.println();
+        for (Student s : studentBinTree) {
+            System.out.println(s);
+        }
+
+        System.out.println();
+        studentBinTree.forEach(System.out::println);
 
     }
 }

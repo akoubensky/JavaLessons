@@ -1,5 +1,6 @@
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.function.Consumer;
 
 public class BinTree<E extends Comparable<E>> implements Iterable<E> {
     private static class Node<E> {
@@ -40,6 +41,40 @@ public class BinTree<E extends Comparable<E>> implements Iterable<E> {
         return node;
     }
 
+    public boolean contains(E obj) {
+        return contains(obj, root);
+    }
+
+    private boolean contains(E obj, Node<E> node) {
+        return
+            node == null ? false :
+            node.info.equals(obj) ? true :
+            node.info.compareTo(obj) > 0 ? contains(obj, node.left) :
+            contains(obj, node.right);
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node<E> node) {
+        if (node == null) return 0;
+        int leftHeight = height(node.left);
+        int righttHeight = height(node.right);
+        return Math.max(leftHeight, righttHeight) + 1;
+    }
+
+    public void iterate(Consumer<E> consumer) {
+        iterate(consumer, root);
+    }
+
+    private void iterate(Consumer<E> consumer, Node<E> node) {
+        if (node == null) return;
+        iterate(consumer, node.left);
+        consumer.accept(node.info);
+        iterate(consumer, node.right);
+    }
+
     public void viewTree() {
         viewTreeRec(root);
     }
@@ -57,8 +92,14 @@ public class BinTree<E extends Comparable<E>> implements Iterable<E> {
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return iterator(root);
     }
 
+    private Iterator<E> iterator(Node<E> node) {
+        if (node == null) return Iterators.empty();
+        return Iterators.concat(
+                Iterators.concat(iterator(node.left), Iterators.singleton(node.info)),
+                iterator(node.right));
+    }
 
 }

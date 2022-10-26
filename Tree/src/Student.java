@@ -1,3 +1,4 @@
+import java.util.Comparator;
 
 public class Student implements Comparable<Student> {
     private final String firstName;
@@ -24,7 +25,7 @@ public class Student implements Comparable<Student> {
 
     @Override
     public String toString() {
-        return "\n"+"Student{" +
+        return "Student{" +
                 "firstName='" + firstName + '\'' +
                 ", name='" + name + '\'' +
                 ", group='" + group + '\'' +
@@ -33,10 +34,13 @@ public class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student o) {
-        if (firstName.compareTo(o.firstName)==0) {
-            if (name.compareTo(o.name)==0) {
-                return group.compareTo(o.group);
-            } return name.compareTo(o.name);
-        } return firstName.compareTo(o.firstName);
+        return Comparator.comparing(Student::getFirstName)
+                .thenComparing(Student::getName)
+                .thenComparing(Student::getGroup).compare(this, o);
+//        if (firstName.compareTo(o.firstName)==0) {
+//            if (name.compareTo(o.name)==0) {
+//                return group.compareTo(o.group);
+//            } return name.compareTo(o.name);
+//        } return firstName.compareTo(o.firstName);
     }
 }
