@@ -2,76 +2,78 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
-public class BinTree<E extends Comparable<E>> implements Iterable<E> {
-    private static class Node<E> {
-        private E info;
-        private Node<E> left;
-        private Node<E> right;
+public class BinTree<K extends Comparable<K>, V> implements Iterable<Pair<K, V>> {
+    private static class Node<K, V> {
+        private K key;
+        private V info;
+        private Node<K, V> left;
+        private Node<K, V> right;
 
-        public Node(E info, Node<E> left, Node<E> right) {
+        public Node(K key, V info, Node<K, V> left, Node<K, V> right) {
+            this.key = key;
             this.info = info;
             this.left = left;
             this.right = right;
         }
     }
 
-    public BinTree(Comparator<E> comparator) {
+    public BinTree(Comparator<K> comparator) {
        this.comparator=comparator;
     }
-    private Comparator<E> comparator;
+    private Comparator<K> comparator;
 
-    private Node<E> root;
+    private Node<K, V> root;
 
-    public void add(E ob) {
-        root = add(ob, root);
+    public void add(K key, V value) {
+        root = add(key, value, root);
     }
 
-    private Node<E> add(E ob, Node<E> node) {
+    private Node<K, V> add(K key, V value, Node<K, V> node) {
         if (node == null) {
-            return new Node<>(ob, null, null);
+            return new Node<>(key, value, null, null);
         }
-        if (!ob.equals(node.info)) {
+        if (!key.equals(node.key)) {
 //            if (comparator.compare(ob, node.info)>0)
-            if (ob.compareTo(node.info) > 0) {
-                node.right = add(ob, node.right);
+            if (key.compareTo(node.key) > 0) {
+                node.right = add(key, value, node.right);
             } else {
-                node.left = add(ob, node.left);
+                node.left = add(key, value, node.left);
             }
         }
         return node;
     }
 
-    public boolean contains(E obj) {
+    public boolean contains(K obj) {
         return contains(obj, root);
     }
 
-    private boolean contains(E obj, Node<E> node) {
+    private boolean contains(K key, Node<K, V> node) {
         return
             node == null ? false :
-            node.info.equals(obj) ? true :
-            node.info.compareTo(obj) > 0 ? contains(obj, node.left) :
-            contains(obj, node.right);
+            node.key.equals(key) ? true :
+            node.key.compareTo(key) > 0 ? contains(key, node.left) :
+            contains(key, node.right);
     }
 
     public int height() {
         return height(root);
     }
 
-    private int height(Node<E> node) {
+    private int height(Node<K, V> node) {
         if (node == null) return 0;
         int leftHeight = height(node.left);
         int righttHeight = height(node.right);
         return Math.max(leftHeight, righttHeight) + 1;
     }
 
-    public void iterate(Consumer<E> consumer) {
+    public void iterate(Consumer<Pair<K,V>> consumer) {
         iterate(consumer, root);
     }
 
-    private void iterate(Consumer<E> consumer, Node<E> node) {
+    private void iterate(Consumer<Pair<K,V>> consumer, Node<K, V> node) {
         if (node == null) return;
         iterate(consumer, node.left);
-        consumer.accept(node.info);
+        consumer.accept(new Pair<>(node.key, node.info));
         iterate(consumer, node.right);
     }
 
@@ -79,10 +81,10 @@ public class BinTree<E extends Comparable<E>> implements Iterable<E> {
         viewTreeRec(root);
     }
 
-    private void viewTreeRec(Node<E> node) {
+    private void viewTreeRec(Node<K, V> node) {
         if (node == null) return;
 //        выражение с ?
-        System.out.println(node.info);
+        System.out.println(new Pair<>(node.key, node.info));
 
         viewTreeRec(node.left);
 
@@ -91,14 +93,14 @@ public class BinTree<E extends Comparable<E>> implements Iterable<E> {
     }
 
     @Override
-    public Iterator<E> iterator() {
+    public Iterator<Pair<K,V>> iterator() {
         return iterator(root);
     }
 
-    private Iterator<E> iterator(Node<E> node) {
+    private Iterator<Pair<K,V>> iterator(Node<K, V> node) {
         if (node == null) return Iterators.empty();
         return Iterators.concat(
-                Iterators.concat(iterator(node.left), Iterators.singleton(node.info)),
+                Iterators.concat(iterator(node.left), Iterators.singleton(new Pair<>(node.key, node.info))),
                 iterator(node.right));
     }
 
