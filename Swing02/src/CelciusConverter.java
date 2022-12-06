@@ -34,6 +34,9 @@ public class CelciusConverter extends JFrame {
 	JLabel fahrenheitLabel;
 	// Кнопка для перевода из градусов Цельсия в градусы Фаренгейта:
 	JButton convertTemp;
+	private JPanel myInnerPanel;
+	private JTextField textField1;
+	private JLabel поФаренгейтуLabel;
 
 	// Конструктор
 	public CelciusConverter() {
@@ -67,19 +70,17 @@ public class CelciusConverter extends JFrame {
 		// Соответствующий "слухач", слушает событие действия с кнопкой (нажатие)
 		// и выполняет дейстие - перевод значения температуры из Цельсия в
 		// Фаренгейты, а затем изменяет содержимое соответствующей надписи.
-		convertTemp.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// Пробуем преобразовать заданное вещественное число в градусы по Фаренгейту.
-				String labelText = "По Фаренгейту: ";
-				try {
-					int tempFahr = (int)((Double.parseDouble(tempCelsius.getText()))
-							* 1.8 + 32);
-					fahrenheitLabel.setText(labelText + tempFahr);
-				} catch (NumberFormatException x) {
-					fahrenheitLabel.setText(labelText + "??");
-				}
-				((JFrame)converterPanel.getRootPane().getParent()).pack();
+		convertTemp.addActionListener(e -> {
+			// Пробуем преобразовать заданное вещественное число в градусы по Фаренгейту.
+			String labelText = "По Фаренгейту: ";
+			try {
+				int tempFahr = (int)((Double.parseDouble(tempCelsius.getText()))
+						* 1.8 + 32);
+				fahrenheitLabel.setText(labelText + tempFahr);
+			} catch (NumberFormatException x) {
+				fahrenheitLabel.setText(labelText + "??");
 			}
+			((JFrame)converterPanel.getRootPane().getParent()).pack();
 		});
 
 		// Добавляем все элементы в контейнер.
