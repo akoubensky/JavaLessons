@@ -17,8 +17,6 @@ public class HelloWorldFrame extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() { (new HelloWorldFrame()).createAndShowGUI(); }
-		});
+		SwingUtilities.invokeLater(() -> (new HelloWorldFrame()).createAndShowGUI());
 	}
 }

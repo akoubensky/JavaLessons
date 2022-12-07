@@ -84,12 +84,12 @@ public class CelciusConverter extends JFrame {
 		});
 
 		// Добавляем все элементы в контейнер.
-		converterPanel.add(tempCelsius);
+		converterPanel.add(tempCelsius, 0, 0);
 		converterPanel.add(celsiusLabel);
 		converterPanel.add(convertTemp);
 		converterPanel.add(fahrenheitLabel);
 
-		Border borderSmall = BorderFactory.createEmptyBorder(5,15,5,15);
+		Border borderSmall = BorderFactory.createEmptyBorder(5,15,5,0);
 		celsiusLabel.setBorder(borderSmall);
 		fahrenheitLabel.setBorder(borderSmall);
 
@@ -100,14 +100,12 @@ public class CelciusConverter extends JFrame {
 	 * Основная функция, запускающая приложение.
 	 */
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				CelciusConverter converter = new CelciusConverter();
-				converter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				converter.pack();
-				converter.setLocation(100, 100);
-				converter.setVisible(true);
-			}
+		SwingUtilities.invokeLater(() -> {
+			CelciusConverter converter = new CelciusConverter();
+			converter.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			converter.pack();
+			converter.setLocation(100, 100);
+			converter.setVisible(true);
 		});
 	}
 }
