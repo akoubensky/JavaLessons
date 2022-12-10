@@ -10,10 +10,10 @@ import java.io.PrintWriter;
 public class JettyServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("text/plain");
+        response.setContentType("text/plain; charset=Windows-1251");
         response.setStatus(HttpServletResponse.SC_OK);
         PrintWriter writer = response.getWriter();
-        writer.println("Hello world");
+        writer.println("Привет, мир!");
         writer.close();
     }
 }
