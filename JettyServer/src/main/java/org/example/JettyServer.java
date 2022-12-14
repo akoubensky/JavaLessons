@@ -2,6 +2,7 @@ package org.example;
 
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.DefaultHandler;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
@@ -19,8 +20,8 @@ public class JettyServer {
 
         HandlerList handlers = new HandlerList();
         handlers.setHandlers(new Handler[] {
-                servletHandler,
                 resourceHandler,
+                servletHandler,
                 new DefaultHandler() });
         server.setHandler(handlers);
 
