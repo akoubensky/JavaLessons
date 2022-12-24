@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="students" type="studList"/>
+
+    <xs:complexType name="studList">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="student" type="studType"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="studType">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="mark" type="markType"/>
+        </xs:sequence>
+        <xs:attribute name="firstname" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+    </xs:complexType>
+
+    <xs:complexType name="markType">
+        <xs:attribute name="subject">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Algorithms"/>
+                    <xs:enumeration value="Java"/>
+                    <xs:enumeration value="Stream API"/>
+                    <xs:enumeration value="Lambda"/>
+                    <xs:enumeration value="XML"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="mark">
+            <xs:simpleType>
+                <xs:restriction base="xs:integer">
+                    <xs:minInclusive value="2"/>
+                    <xs:maxInclusive value="5"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+</xs:schema>

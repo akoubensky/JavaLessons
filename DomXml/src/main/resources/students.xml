@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<students xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+          xs:schemaLocation="students.xsd">
+    <student firstname="Дмитрий" name="Попов">
+        <mark subject="Algorithms" mark="4"/>
+        <mark subject="Java" mark="5"/>
+        <mark subject="Stream API" mark="8"/>
+    </student>
+    <student firstname="Сергей" name="Иванов">
+        <mark subject="Algorithms" mark="5"/>
+        <mark subject="Java" mark="4"/>
+        <mark subject="Stream API" mark="4"/>
+    </student>
+</students>
