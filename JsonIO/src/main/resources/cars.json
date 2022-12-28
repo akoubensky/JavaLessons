@@ -1,0 +1,14 @@
+{
+  "park-number": 25634,
+  "park-owner": "Putin",
+  "cars": [
+    {
+      "car-color": "red",
+      "type": "ferrary"
+    },
+    {
+      "type": "lada",
+      "car-color": "blue"
+    }
+  ]
+}
